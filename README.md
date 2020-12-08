@@ -1,6 +1,6 @@
 # Art-Classification
 
-![img](https://github.com/perceptionmgmt/Art-Classification/blob/main/final_presentation.pdf)
+![](https://github.com/perceptionmgmt/Art-Classification/blob/main/final_presentation.pdf)
 
 Final project for Machine Learning course at Pratt Institute with Amir Imani
 
