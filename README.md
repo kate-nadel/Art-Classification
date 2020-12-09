@@ -33,7 +33,7 @@ def save_images(image_url, image_name, image_dir):
     f.close()
 ```
 For this binary classification, save an equal amount of lithographs as non lithographs using the data_loader notebook.
-I manually organized the images into train & validation folders. With 1800 "TRUE" and 1800 "FALSE" in the train, and 200 of each in the validation folder.
+I manually organized the images into train & validation folders. With 1800 "TRUE" and 1800 "FALSE" in the train, and 200 of each in the validation folder. For this project I was limited to 4000 images due to available space on my computer. Instead of turning the images to grayscale using color_mode = grayscale I decided to keep the 3 RGB channels. Since these are works of art it seems that color could be a significant feature in the data.
 
 When it comes time to test an image, download one at a time using this data loader into a test folder.
 
@@ -77,4 +77,6 @@ The accuracy of this model came out to 85.71%
 
 ![](https://github.com/perceptionmgmt/Art-Classification/blob/main/git-images/Screen%20Shot%202020-12-09%20at%206.34.18%20PM.jpg)
 
-### Findings & Discussion
+### Findings & next steps
+
+While my model was successful I would like to figure out how to do batch testing and test multiple images at once. This way I can recognize patterns and see which images are resulting in inaccuracies and why. Considering that my model was at 85% accuracy, I am glad it didn't begin to overfit data. Another next step would be to include a larger training set that includes many more works of art.
