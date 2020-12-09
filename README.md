@@ -32,39 +32,45 @@ def save_images(image_url, image_name, image_dir):
     f.write(requests.get(image_url).content)
     f.close()
 ```
-For this binary classification, save an equal amount of lithographs as non lithographs
-```
-for idx, row in tqdm(df[df['Target'] == False].head(50).iterrows(), total=df.shape[0]):
-    save_images(row['ThumbnailURL'], row['ObjectID'], "../data/images/")
+For this binary classification, save an equal amount of lithographs as non lithographs using the data_loader notebook.
+I manually organized the images into train & validation folders. With 1800 "TRUE" and 1800 "FALSE" in the train, and 200 of each in the validation folder.
 
-for idx, row in tqdm(df[df['Target'] == True].head(50).iterrows(), total=df.shape[0]):
-    save_images(row['ThumbnailURL'], row['ObjectID'], "../data/images/")
-```
+When it comes time to test an image, download one at a time using this data loader into a test folder.
 
-2. Refine the dataframe so that it includes a “foreign key” which connects the ObjectID (also how the images are titled) to whether or not it is a lithograph (the target, or y)
 
-3. Load and resize the images
+2.  Build a dataframe which includes relevant information. This will be referred to later when testing the model. Create a column with the Target: if the Medium is lithograph, the target is True.
 
 ```
-images_resized = tf.keras.preprocessing.image_dataset_from_directory(
-    "../data/images/",
-    label_mode="int",
-    class_names=None,
-    color_mode="grayscale",
-    batch_size=5,
-    image_size=(64, 64),
-)
+lith_condition = df['Medium'].str.lower().str.contains('lithograph')
+df['Target'] = lith_condition
+
+df = df[['ObjectID', 'ThumbnailURL', 'Target']]
+df.head()
 ```
 
 
-4. Connect the target to the actual training images (create the classes/labels)
+3. Load and resize the images using flow_from_directory
 
-5. Build the model
+```
+train_dataset = train.flow_from_directory("../data/images/all/train/",
+                                          target_size = (64,64),
+                                          batch_size = 25,
+                                          class_mode = "binary",
+                                         )
+```
 
-6. Fit the model
+4. Build the model
 
-7. Test it & expand data
+This model includes a Conv2D layer, 2 MaxPooling layers, and a flatten layer
 
+5. Fit the model
 
+The model is compiled using the "adam" optimizer, loss is at to "binary_crossentropy," and metrics are set to "accuracy"
 
+I tested the steps_per_epoch and number of epochs, and the results that worked best with the highest accuracy was steps_per_epoch = 12 and epochs = 10
+
+6. Test it!
+The accuracy of this model came out to 85.71%
+
+7. I tested one image at a time and then checked the original dataframe's Target column to verify. It worked for that image!
 ### Findings & Discussion
