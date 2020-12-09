@@ -1,12 +1,12 @@
 # Art-Classification
 
-![](https://raw.githubusercontent.com/perceptionmgmt/Art-Classification/main/img.jpeg)
+![](https://raw.githubusercontent.com/perceptionmgmt/Art-Classification/main/git-images/img.jpeg)
 
 Final project for Machine Learning (INFO 656) course at Pratt Institute with Amir Imani
 
 
 ### Project description
-Build a neural network that can classify works of art from the Museum of Modern Art’s collection by their medium. Ultimately my project is to create a neural network to classify whether a work of art is a lithograph or not a lithograph. Once I have this completed I can expand from a binary classification to a multi-class classification neural net.
+The goal of this project was to build a neural network that can classify works of art from the Museum of Modern Art’s collection by their medium. Ultimately my project is to create a neural network to classify whether a work of art is a lithograph or not a lithograph. Once I have this completed I can expand from a binary classification to a multi-class classification neural net in the future.
 
 
 ### Concept
@@ -73,4 +73,8 @@ I tested the steps_per_epoch and number of epochs, and the results that worked b
 The accuracy of this model came out to 85.71%
 
 7. I tested one image at a time and then checked the original dataframe's Target column to verify. It worked for that image!
+![](https://raw.githubusercontent.com/perceptionmgmt/Art-Classification/main/git-images/Screen%20Shot%202020-12-09%20at%206.34.06%20PM.jpg)
+
+![](https://github.com/perceptionmgmt/Art-Classification/blob/main/git-images/Screen%20Shot%202020-12-09%20at%206.34.18%20PM.jpg)
+
 ### Findings & Discussion
