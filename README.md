@@ -1,6 +1,6 @@
 # Art-Classification
 
-![img](https://raw.githubusercontent.com/perceptionmgmt/Art-Classification/main/img.pdf)
+![img](https://raw.githubusercontent.com/perceptionmgmt/Art-Classification/main/img.pdfraw=true)
 
 Final project for Machine Learning (INFO 656) course at Pratt Institute with Amir Imani
 
@@ -43,8 +43,19 @@ for idx, row in tqdm(df[df['Target'] == True].head(50).iterrows(), total=df.shap
 
 2. Refine the dataframe so that it includes a “foreign key” which connects the ObjectID (also how the images are titled) to whether or not it is a lithograph (the target, or y)
 
-
 3. Load and resize the images
+
+```
+images_resized = tf.keras.preprocessing.image_dataset_from_directory(
+    "../data/images/",
+    label_mode="int",
+    class_names=None,
+    color_mode="grayscale",
+    batch_size=5,
+    image_size=(64, 64),
+)
+```
+
 
 4. Connect the target to the actual training images (create the classes/labels)
 
